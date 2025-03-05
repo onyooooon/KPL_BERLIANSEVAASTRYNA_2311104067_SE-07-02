@@ -1,11 +1,26 @@
-﻿class Program
+﻿using System;
+
+class Program
 {
     static void Main()
     {
-        // Menampilkan semua kode pos
-        KodePos.TampilkanSemuaKodePos();
+        DoorMachine door = new DoorMachine(); 
 
-        Console.WriteLine("\nPress any key to exit...");
-        Console.ReadKey();
+        while (true)
+        {
+            Console.Write("\nMasukkan perintah ('Terbuka' atau 'Terkunci'): ");
+            string input = Console.ReadLine();
+
+            if (input.Equals("Terbuka", StringComparison.OrdinalIgnoreCase) ||
+                input.Equals("Terkunci", StringComparison.OrdinalIgnoreCase))
+            {
+                door.ChangeState(input);
+            }
+            else
+            {
+                Console.WriteLine("Program selesai.");
+                break;
+            }
+        }
     }
 }
